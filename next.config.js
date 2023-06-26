@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+const withTM = require("next-transpile-modules")(["plotly.js"]);
 
-module.exports = nextConfig
+const nextConfig = {
+	reactStrictMode: true,
+	// Add other Next.js configuration options here
+};
+
+module.exports = withTM(nextConfig);
