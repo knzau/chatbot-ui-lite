@@ -4,6 +4,7 @@ import { FC } from "react";
 import dynamic from "next/dynamic";
 import useHover from "../hooks/useHover";
 import ChatFeedback from "./ChatFeedback";
+import { onCopy, onDislike, onDownload, onLike } from "@/utils";
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 
 interface Props {
@@ -28,6 +29,10 @@ export const ChatMessage: FC<Props> = ({ message, isFirst }) => {
 		},
 	};
 
+	interface Props {
+		onSend: (message: Message) => void;
+	}
+
 	const { isHovered, handleMouseEnter, handleMouseLeave } = useHover(false);
 	console.log({ isFirst });
 
@@ -41,7 +46,14 @@ export const ChatMessage: FC<Props> = ({ message, isFirst }) => {
 			>
 				{!!text ? (
 					<div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="relative">
-						{isHovered && message.role === "assistant" && !isFirst && <ChatFeedback />}
+						{isHovered && message.role === "assistant" && !isFirst && (
+							<ChatFeedback
+								onLike={onLike}
+								onDislike={onDislike}
+								onCopy={onCopy}
+								onDownload={onDownload}
+							/>
+						)}
 						{content.text}
 					</div>
 				) : (
@@ -52,7 +64,7 @@ export const ChatMessage: FC<Props> = ({ message, isFirst }) => {
 				className={`flex my-4 flex-col justify-center  rounded-2xl px-3 py-2 max-w-[67%] whitespace-pre-wrap`}
 				style={{ overflowWrap: "anywhere" }}
 			>
-				{(visualizations || []).map((visualData, i) => {
+				{(visualizations || []).map((visualData: any, i) => {
 					if (visualData[0].type === "scattermapbox") {
 						return (
 							<Plot

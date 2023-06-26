@@ -5,7 +5,7 @@ import { Footer } from "@/components/Layout/Footer";
 import { Navbar } from "@/components/Layout/Navbar";
 import { Message } from "@/types";
 import Head from "next/head";
-import { defaultText, mockResponseData, mockVisualizations } from "@/utils";
+import { defaultText, mockResponseData } from "@/utils";
 import { log } from "console";
 
 export default function Home() {
@@ -59,7 +59,7 @@ export default function Home() {
 
 			if (isFirst) {
 				isFirst = false;
-				setMessages((messages) => [
+				setMessages((messages: any[]) => [
 					...messages,
 					{
 						role: "assistant",
@@ -67,7 +67,7 @@ export default function Home() {
 					},
 				]);
 			} else {
-				setMessages((messages) => {
+				setMessages((messages: any[]) => {
 					const lastMessage = messages[messages.length - 1];
 					const updatedMessage = {
 						...lastMessage,
@@ -79,11 +79,11 @@ export default function Home() {
 		}
 	};
 
-	const handleMockResponse = async (message: Message) => {
-		setMessages((messages) => [...messages, message]);
+	const handleMockResponse = async (message: any) => {
+		setMessages((messages: any[]) => [...messages, message]);
 		setLoading(true);
 
-		setMessages((messages) => [
+		setMessages((messages: any[]) => [
 			...messages,
 			{
 				role: "assistant",

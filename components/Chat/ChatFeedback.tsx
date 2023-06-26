@@ -1,7 +1,14 @@
 import React from "react";
 import { IconThumbUp, IconThumbDown, IconCopy, IconDownload } from "@tabler/icons-react";
 
-const ChatFeedback = ({ onLike, onDislike, onCopy, onDownload }) => {
+interface Props {
+	onLike: () => void;
+	onDislike: () => void;
+	onCopy: () => void;
+	onDownload: () => void;
+}
+
+const ChatFeedback = ({ onLike, onDislike, onCopy, onDownload }: Props) => {
 	return (
 		<div className="flex flex-row items-center bg-slate-50 rounded-md drop-shadow-md max-w-[180px] justify-around absolute right-0 bottom-[70px] ">
 			<button

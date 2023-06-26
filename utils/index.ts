@@ -63,38 +63,6 @@ export const OpenAIStream = async (messages: Message[]) => {
 	return stream;
 };
 
-export const mockVisualizations = {
-	type: "scattermapbox",
-	lat: [37.7749, 34.0522, 40.7128],
-	lon: [-122.4194, -118.2437, -74.006],
-	mode: "markers",
-	marker: {
-		size: 10,
-		color: "rgb(255, 0, 0)",
-	},
-
-	type: "table",
-	header: {
-		values: [["<b>City</b>"], ["<b>Population</b>"]],
-		align: ["center"],
-		line: { width: 1, color: "black" },
-		fill: { color: "grey" },
-		font: { family: "Arial", size: 12, color: "white" },
-	},
-	cells: {
-		values: [
-			["San Francisco", "Los Angeles", "New York City"],
-			[883305, 3977683, 8537673],
-		],
-		align: ["center"],
-		line: { color: "black", width: 1 },
-		font: { family: "Arial", size: 11, color: ["black"] },
-	},
-	type: "pie",
-	labels: ["Apple", "Orange", "Banana"],
-	values: [40, 30, 20],
-};
-
 export const defaultText = `Hi there! I'm Chatbot UI, an AI assistant. I can help you with things like answering questions, providing information, and helping with tasks. How can I help you?`;
 
 export const mockResponseData = {
@@ -142,3 +110,10 @@ export const mockResponseData = {
 	],
 	text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut aliquam sollicitudin magna at ultricies. Fusce maximus, nunc id eleifend accumsan, magna tellus lacinia urna, in tincidunt mauris nulla sit amet tellus. Integer tincidunt ipsum non nunc interdum facilisis.",
 };
+
+export const onLike = () => {};
+
+export const onCopy = () => {};
+
+export const onDislike = () => {};
+export const onDownload = () => {};
